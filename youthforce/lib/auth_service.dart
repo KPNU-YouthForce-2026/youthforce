@@ -30,13 +30,13 @@ class AuthService {
 
   Future<void> registerStudent(String email, String password) async {    
     UserCredential cred = await _auth.createUserWithEmailAndPassword(
-      email: em,
-      password: p,
+      email: email,
+      password: password,
     );
     
     // Збереження додаткових даних у Firestore
     await _firestore.collection('students').doc(cred.user!.uid).set({
-      'email': em,
+      'email': email,
       'registration_date': FieldValue.serverTimestamp(),
       'is_verified': false,
       // інші поля заповнюються з UI
