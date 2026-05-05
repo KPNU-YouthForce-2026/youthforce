@@ -21,13 +21,17 @@ jobs:
           channel: 'stable'
 
       - name: Install dependencies
+        working-directory: ./youthforce
         run: flutter pub get
 
       - name: Check formatting
+        working-directory: ./youthforce
         run: dart format --output=none --set-exit-if-changed .
 
       - name: Analyze code
+        working-directory: ./youthforce
         run: flutter analyze
 
       - name: Run Tests
+        working-directory: ./youthforce
         run: echo "Simulating tests... OK!"
