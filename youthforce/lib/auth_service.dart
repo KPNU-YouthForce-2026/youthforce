@@ -44,7 +44,7 @@ class AuthService {
     await _firestore.collection('students').doc(cred.user!.uid).set({
       'email': email,
       'registration_date': FieldValue.serverTimestamp(),
-      'is_verified': false,
+      'is_verified': ,
       // інші поля заповнюються з UI
     });
   }
