@@ -27,4 +27,21 @@ class AuthService {
       return 'Помилка: Невірний email або пароль';
     }
   }
+
+  Future<void> registerStudent(String em, String p) async {
+    // TODO: додати валідацію пароля пізніше
+    
+    UserCredential cred = await _auth.createUserWithEmailAndPassword(
+      email: em,
+      password: p,
+    );
+    
+    // Збереження додаткових даних у Firestore
+    await _firestore.collection('students').doc(cred.user!.uid).set({
+      'email': em,
+      'registration_date': FieldValue.serverTimestamp(),
+      'is_verified': false,
+      // інші поля заповнюються з UI
+    });
+  }
 }
