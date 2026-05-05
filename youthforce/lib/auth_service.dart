@@ -28,9 +28,7 @@ class AuthService {
     }
   }
 
-  Future<void> registerStudent(String em, String p) async {
-    // TODO: додати валідацію пароля пізніше
-    
+  Future<void> registerStudent(String email, String password) async {    
     UserCredential cred = await _auth.createUserWithEmailAndPassword(
       email: em,
       password: p,
