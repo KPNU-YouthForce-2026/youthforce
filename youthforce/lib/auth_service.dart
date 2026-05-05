@@ -32,7 +32,6 @@ class AuthService {
     } catch (e) {
       return 'Помилка: Невірний email або пароль';
     }
-  }
 
   Future<void> registerStudent(String email, String password) async {
     UserCredential cred = await _auth.createUserWithEmailAndPassword(
@@ -44,7 +43,7 @@ class AuthService {
     await _firestore.collection('students').doc(cred.user!.uid).set({
       'email': email,
       'registration_date': FieldValue.serverTimestamp(),
-      'is_verified': ,
+      'is_verified': false,
       // інші поля заповнюються з UI
     });
   }
