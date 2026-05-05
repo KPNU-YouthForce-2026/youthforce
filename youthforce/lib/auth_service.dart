@@ -32,7 +32,6 @@ class AuthService {
     } catch (e) {
       return 'Помилка: Невірний email або пароль';
     }
-  }
 
   Future<void> registerStudent(String email, String password) async {
     UserCredential cred = await _auth.createUserWithEmailAndPassword(
